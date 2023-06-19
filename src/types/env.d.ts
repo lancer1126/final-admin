@@ -24,7 +24,7 @@ interface ImportMetaEnv {
    * - 格式 {VITE_ICON_PREFIX}-{本地图标集合名称}
    * - 例如：icon-local
    */
-  readonly VITE_ICON_LOCAL_PREFFIX: string;
+  readonly VITE_ICON_LOCAL_PREFIX: string;
   /** 后端服务的环境类型 */
   readonly VITE_SERVICE_ENV?: ServiceEnvType;
   /** 开启请求代理 */

@@ -1,7 +1,7 @@
 import { defineConfig, loadEnv } from "vite";
 import { setupVitePlugins } from "./build/plugin";
-import * as process from "process";
 import { getSrcPath } from "./build";
+import { include } from "./build/optimize";
 
 export default defineConfig(configEnv => {
   const viteEnv = loadEnv(configEnv.mode, process.cwd()) as unknown as ImportMetaEnv;
@@ -15,9 +15,22 @@ export default defineConfig(configEnv => {
       }
     },
     plugins: setupVitePlugins(viteEnv),
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@use "./src/styles/scss/global.scss" as *;`
+        }
+      }
+    },
     server: {
       host: "0.0.0.0",
-      port: viteEnv.VITE_PORT
+      port: viteEnv.VITE_PORT,
+      open: true
+    },
+    optimizeDeps: { include },
+    build: {
+      sourcemap: false,
+      reportCompressedSize: false
     }
   };
 });
