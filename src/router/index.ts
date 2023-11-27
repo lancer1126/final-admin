@@ -9,6 +9,7 @@ export const router = createRouter({
   routes: constantRoutes as any
 });
 
-export function setupRouter(app: App) {
+export async function setupRouter(app: App) {
   app.use(router);
+  await router.isReady();
 }

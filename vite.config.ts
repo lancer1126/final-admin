@@ -6,22 +6,17 @@ import { include } from "./build/optimize";
 export default defineConfig(configEnv => {
   const viteEnv = loadEnv(configEnv.mode, process.cwd()) as unknown as ImportMetaEnv;
   const srcPath = getSrcPath();
+  const buildPath = getSrcPath("build");
 
   return {
     base: viteEnv.VITE_BASE_URL,
     resolve: {
       alias: {
-        "@": srcPath
+        "@": srcPath,
+        "@build": buildPath
       }
     },
-    plugins: setupVitePlugins(viteEnv),
-    css: {
-      preprocessorOptions: {
-        scss: {
-          additionalData: `@use "./src/styles/scss/global.scss" as *;`
-        }
-      }
-    },
+    plugins: setupVitePlugins(),
     server: {
       host: "0.0.0.0",
       port: viteEnv.VITE_PORT,

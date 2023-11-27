@@ -1,21 +1,21 @@
-import { createApp } from "vue";
 import App from "./App.vue";
+import { createApp } from "vue";
 import { setupAssets } from "@/plugins";
 import { setupRouter } from "@/router";
 import { setupI18n } from "@/locales";
 import { setupStore } from "@/store";
-import AppLoading from "@/components/common/app-loading.vue";
+import { setupIcon } from "@/components/ReIcon";
+import { initGlobalSettings } from "@/config";
 
+// 初始化样式
 setupAssets();
 
-const appLoading = createApp(AppLoading);
-appLoading.mount("#appLoading");
-
 const app = createApp(App);
-setupStore(app);
-setupRouter(app);
-setupI18n(app);
 
-appLoading.unmount();
-
-app.mount("#app");
+initGlobalSettings(app).then(async () => {
+  setupIcon(app);
+  setupStore(app);
+  await setupRouter(app);
+  setupI18n(app);
+  app.mount("#app");
+});

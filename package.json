@@ -14,6 +14,7 @@
     "colord": "^2.9.3",
     "element-plus": "^2.3.6",
     "js-cookie": "^3.0.5",
+    "naive-ui": "2.34.4",
     "path": "^0.12.7",
     "pinia": "^2.1.4",
     "swiper": "^9.4.1",
@@ -22,14 +23,14 @@
     "vue-router": "^4.2.2"
   },
   "devDependencies": {
-    "@iconify/json": "^2.2.75",
+    "@iconify-icons/ep": "^1.2.11",
+    "@iconify-icons/ri": "^1.2.8",
     "@iconify/vue": "^4.1.1",
+    "@intlify/unplugin-vue-i18n": "^0.11.0",
+    "@pureadmin/theme": "^3.1.0",
     "@soybeanjs/cli": "0.5.4",
     "@soybeanjs/vite-plugin-vue-page-route": "0.0.6",
     "@types/node": "^20.2.5",
-    "@unocss/preset-uno": "^0.53.1",
-    "@unocss/transformer-directives": "^0.53.1",
-    "@unocss/vite": "^0.53.1",
     "@vitejs/plugin-vue": "^4.2.3",
     "@vitejs/plugin-vue-jsx": "^3.0.1",
     "@typescript-eslint/eslint-plugin": "^5.59.11",
@@ -49,6 +50,7 @@
     "vite": "^4.3.9",
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-svg-icons": "^2.0.1",
+    "vite-svg-loader": "^4.0.0",
     "vue-tsc": "^1.8.0"
   },
   "pnpm": {
