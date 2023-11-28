@@ -4,18 +4,28 @@ import { setupAssets } from "@/plugins";
 import { setupRouter } from "@/router";
 import { setupI18n } from "@/locales";
 import { setupStore } from "@/store";
-import { setupIcon } from "@/components/ReIcon";
-import { initGlobalSettings } from "@/config";
+import AppLoading from "@/components/common/app-loading.vue";
 
-// 初始化样式
-setupAssets();
+async function setupApp() {
+  // 初始化样式
+  setupAssets();
 
-const app = createApp(App);
+  // 加载页
+  const appLoading = createApp(AppLoading);
+  appLoading.mount("#appLoading");
 
-initGlobalSettings(app).then(async () => {
-  setupIcon(app);
+  // app启动
+  const app = createApp(App);
   setupStore(app);
   await setupRouter(app);
   setupI18n(app);
+
+  appLoading.unmount();
   app.mount("#app");
+
+  return "Startup Successful!";
+}
+
+setupApp().then(r => {
+  console.log(r);
 });
