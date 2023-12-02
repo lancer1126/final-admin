@@ -19,7 +19,7 @@ export default defineConfig(configEnv => {
     server: {
       host: "0.0.0.0",
       port: viteEnv.VITE_PORT,
-      open: true
+      open: false
     },
     css: {
       preprocessorOptions: {

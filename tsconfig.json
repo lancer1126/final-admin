@@ -1,27 +1,23 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "target": "ESNext",
-    "jsx": "preserve",
     "module": "ESNext",
-    "moduleResolution": "Node",
-    "allowJs": false,
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
-    "importHelpers": true,
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "strict": false,
-    "strictFunctionTypes": false,
-    "sourceMap": true,
-    "paths": {
-      "@/*": ["src/*"],
-      "@build/*": ["build/*"]
-    },
+    "target": "ESNext",
     "lib": ["DOM", "ESNext"],
+    "strict": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "jsx": "preserve",
+    "moduleResolution": "node",
+    "isolatedModules": true,
+    "resolveJsonModule": true,
+    "noUnusedLocals": true,
+    "strictNullChecks": true,
+    "forceConsistentCasingInFileNames": true,
+    "paths": {
+      "~/*": ["./*"],
+      "@/*": ["./src/*"]
+    },
     "types": [
       "node",
       "vite/client",
@@ -30,6 +26,5 @@
       "naive-ui/volar"
     ]
   },
-  "include": ["src/**/*.ts", "src/types/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "vite.config.ts"],
-  "exclude": ["dist", "**/*.js", "node_modules"]
+  "exclude": ["dist", "node_modules"]
 }

@@ -8,7 +8,16 @@ import compress from "./compress";
 import unplugins from "./unplugin";
 
 export function setupVitePlugins(viteEnv: ImportMetaEnv): (PluginOption | PluginOption[])[] {
-  const plugins = [vue(), vueJsx(), VueDevTools(), ...unplugins(viteEnv), unocss(), progress()];
+  const plugins = [
+    vue({
+      script: { defineModel: true }
+    }),
+    vueJsx(),
+    VueDevTools(),
+    ...unplugins(viteEnv),
+    unocss(),
+    progress()
+  ];
 
   if (viteEnv.VITE_COMPRESS === "Y") {
     plugins.push(compress());

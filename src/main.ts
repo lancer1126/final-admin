@@ -23,7 +23,7 @@ async function setupApp() {
   appLoading.unmount();
   app.mount("#app");
 
-  return "Startup Successful!";
+  return "final-admin startup successful!";
 }
 
 setupApp().then(r => {
