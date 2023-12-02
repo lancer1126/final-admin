@@ -1,9 +1,22 @@
 declare namespace I18nType {
-  type langType = "en" | "zh-CN";
+  type LangType = "en" | "zh-CN";
 
-  interface Schema {
+  type Schema = {
     system: {
       title: string;
+    };
+    common: {
+      add: string;
+      addSuccess: string;
+      edit: string;
+      editSuccess: string;
+      delete: string;
+      deleteSuccess: string;
+      batchDelete: string;
+      confirm: string;
+      cancel: string;
+      pleaseCheckValue: string;
+      action: string;
     };
     routes: {
       dashboard: {
@@ -79,5 +92,13 @@ declare namespace I18nType {
       };
       about: string;
     };
-  }
+  };
+
+  type GetI18nKey<T extends Record<string, unknown>, K extends keyof T = keyof T> = K extends string
+    ? T[K] extends Record<string, unknown>
+      ? `${K}.${GetI18nKey<T[K]>}`
+      : K
+    : never;
+
+  type I18nKey = GetI18nKey<Schema>;
 }

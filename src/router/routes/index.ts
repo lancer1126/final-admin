@@ -1,3 +1,5 @@
+import { getLoginModuleRegExp } from "@/utils";
+
 export const ROOT_ROUTE: AuthRoute.Route = {
   name: "root",
   path: "/",
@@ -7,4 +9,22 @@ export const ROOT_ROUTE: AuthRoute.Route = {
   }
 };
 
-export const constantRoutes: AuthRoute.Route[] = [ROOT_ROUTE];
+export const constantRoutes: AuthRoute.Route[] = [
+  ROOT_ROUTE,
+  {
+    name: "login",
+    path: "/login",
+    component: "self",
+    props: route => {
+      const moduleType = (route.params.module as UnionKey.LoginModule) || "pwd-login";
+      return {
+        module: moduleType
+      };
+    },
+    meta: {
+      title: "登录",
+      dynamicPath: `/login/:module(${getLoginModuleRegExp()})?`,
+      singleLayout: "blank"
+    }
+  }
+];
